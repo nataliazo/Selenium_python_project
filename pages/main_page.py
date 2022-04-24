@@ -1,9 +1,9 @@
-class BasePage():
-    #объявляем конструктор __init__ В него в качестве параметров мы передаем экземпляр драйвера и url адрес.
-    def __init__(self, browser, url):
-        self.browser = browser
-        self.url = url
+from selenium.webdriver.common.by import By
+from .base_page import BasePage
+# импорт базового класса BasePage
 
-    #добавим еще один метод open. Он должен открывать нужную страницу в браузере, используя метод get().
-    def open (self):
-        self.browser.get(self.url)
+class MainPage(BasePage):
+    def go_to_login_page(self):
+        login_link = self.browser.find_element(By.CSS_SELECTOR, "#login_link")
+        login_link.click()
+
